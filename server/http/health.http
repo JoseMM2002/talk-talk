@@ -1,0 +1,7 @@
+### 
+
+@baseUrl = https://{{host}}:{{port}}/api/v1
+
+GET {{baseUrl}}/checkhealth HTTP/1.1
+Accept: application/json
+Origin: https://talk-client.local

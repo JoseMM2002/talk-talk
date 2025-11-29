@@ -17,7 +17,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@tauri-apps/api": "^2.9.0",
     "@tauri-apps/plugin-http": "~2.5.4",
+    "@tauri-apps/plugin-log": "~2.7.1",
+    "@tauri-apps/plugin-notification": "~2.3.3",
     "@tauri-apps/plugin-websocket": "~2.4.1",
     "@vueuse/core": "^14.0.0",
     "class-variance-authority": "^0.7.1",
@@ -28,7 +31,8 @@
     "tailwind-merge": "^3.4.0",
     "vue": "^3.5.22",
     "vue-i18n": "^11.1.12",
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3",
+    "vue-sonner": "^2.0.9"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.17",

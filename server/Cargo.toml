@@ -28,13 +28,3 @@ sqlx = { version = "0.8.6", features = [
 ] }
 tokio = { version = "1.48.0", features = ["full"] }
 tower-http = { version = "0.6.6", features = ["cors", "trace"] }
-
-
-[dev-dependencies.cargo-husky]
-version = "1"
-features = [
-  "run-cargo-fmt",
-  "run-cargo-clippy",
-  "run-cargo-test",
-  "precommit-hook",
-]

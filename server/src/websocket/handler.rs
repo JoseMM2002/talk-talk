@@ -3,19 +3,15 @@ use axum::{
     extract::{WebSocketUpgrade, ws::WebSocket},
     response::Response,
 };
+use log::{error, info};
 
 async fn handle_socket(mut socket: WebSocket) {
     while let Some(msg) = socket.recv().await {
-        let msg = if let Ok(msg) = msg {
-            msg
-        } else {
-            // client disconnected
-            return;
-        };
-
-        if socket.send(msg).await.is_err() {
-            // client disconnected
-            return;
+        if let Ok(msg) = msg {
+            match socket.send(msg).await {
+                Ok(()) => info!("Message sent successfully"),
+                Err(e) => error!("Error sending websocket message: {e}"),
+            }
         }
     }
 }

@@ -1,0 +1,28 @@
+pre-commit:
+  commands:
+    cargo_check:
+      # Run in the server directory
+      root: server
+      run: cargo clippy -- -D warnings
+
+    cargo_fmt:
+      root: server
+      glob: "*.rs"
+      run: cargo fmt -- {staged_files}
+      stage_fixed: true
+
+    cargo_test:
+      root: server
+      run: cargo test
+
+    pnpm_lint:
+      root: client
+      glob: "*.{ts,vue}"
+      run: pnpm exec eslint {staged_files} --fix --cache
+      stage_fixed: true
+
+    pnpm_fmt:
+      root: client
+      glob: "*.{ts,vue,js}"
+      run: pnpm exec prettier --write {staged_files}
+      stage_fixed: true

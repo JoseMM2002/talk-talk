@@ -15,9 +15,18 @@ impl CorsConfig {
         let methods = var("CORS_METHODS").expect("CORS_METHODS must be set");
         let headers = var("CORS_HEADERS").expect("CORS_HEADERS must be set");
         CorsConfig {
-            allowed_origins: origins.split(",").map(|s| s.to_string()).collect(),
-            allowed_methods: methods.split(",").map(|s| s.to_string()).collect(),
-            allowed_headers: headers.split(",").map(|s| s.to_string()).collect(),
+            allowed_origins: origins
+                .split(',')
+                .map(std::string::ToString::to_string)
+                .collect(),
+            allowed_methods: methods
+                .split(',')
+                .map(std::string::ToString::to_string)
+                .collect(),
+            allowed_headers: headers
+                .split(',')
+                .map(std::string::ToString::to_string)
+                .collect(),
         }
     }
 }

@@ -21,6 +21,8 @@ async fn get_database_pool() -> Result<DatabasePool, sqlx::Error> {
         .await
 }
 
+/// # Errors
+/// Errors if the database pool cannot be created.
 pub async fn db_pool() -> Result<&'static DatabasePool, sqlx::Error> {
     DB_POOL
         .get_or_try_init(|| async { get_database_pool().await })

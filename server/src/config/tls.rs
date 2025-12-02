@@ -22,6 +22,9 @@ pub async fn get_tls_config() -> &'static TlsConfig {
     TLS_CONFIG.get_or_init(|| async { TlsConfig::new() }).await
 }
 
+/// # Panics
+///
+/// Panics if the TLS configuration cannot be built from the provided certificate and key files.
 pub async fn build_tls_config() -> RustlsConfig {
     let tls_config = get_tls_config().await;
     RustlsConfig::from_pem_file(&tls_config.cert, &tls_config.key)

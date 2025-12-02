@@ -1,6 +1,6 @@
 ### 
 
-@baseUrl = https://{{host}}:{{port}}/api/v1
+@baseUrl = https://{{APP_HOST}}:{{APP_PORT}}/api/v1
 
 GET {{baseUrl}}/checkhealth HTTP/1.1
 Accept: application/json

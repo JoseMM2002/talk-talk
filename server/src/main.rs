@@ -1,7 +1,7 @@
 use std::net::ToSocketAddrs;
 
 use axum::{Router, routing::any};
-use log::debug;
+use log::info;
 use server::{
     config::{self, build_tls_config},
     middleware::build_cors_layer,
@@ -31,7 +31,7 @@ async fn main() {
         .layer(TraceLayer::new_for_http())
         .layer(build_cors_layer().await);
 
-    debug!(
+    info!(
         "Starting server on https://{}:{}",
         app_config.host, app_config.port
     );

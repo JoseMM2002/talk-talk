@@ -25,12 +25,12 @@ async fn check_health() -> Json<ApiResponse<CheckHealthResponse>> {
         Ok(pool) => match query_scalar!("SELECT 1").fetch_one(pool).await {
             Ok(_) => (true, true),
             Err(err) => {
-                error!("Error querying database: {}", err);
+                error!("Error querying database: {err}");
                 (true, false)
             }
         },
         Err(err) => {
-            error!("Error connecting to database: {}", err);
+            error!("Error connecting to database: {err}");
             (false, false)
         }
     };
